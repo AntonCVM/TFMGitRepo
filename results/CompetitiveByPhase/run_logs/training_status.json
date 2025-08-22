@@ -1,0 +1,95 @@
+{
+    "difficulty": {
+        "lesson_num": 0
+    },
+    "CooperativeCleaner": {
+        "checkpoints": [
+            {
+                "steps": 7679984,
+                "file_path": "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-7679984.onnx",
+                "reward": null,
+                "creation_time": 1755569021.9339812,
+                "auxillary_file_paths": [
+                    "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-7679984.pt"
+                ]
+            },
+            {
+                "steps": 15359872,
+                "file_path": "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-15359872.onnx",
+                "reward": null,
+                "creation_time": 1755578436.6122568,
+                "auxillary_file_paths": [
+                    "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-15359872.pt"
+                ]
+            },
+            {
+                "steps": 23039984,
+                "file_path": "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-23039984.onnx",
+                "reward": 13.481110414357058,
+                "creation_time": 1755587714.520687,
+                "auxillary_file_paths": [
+                    "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-23039984.pt"
+                ]
+            },
+            {
+                "steps": 30719872,
+                "file_path": "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-30719872.onnx",
+                "reward": null,
+                "creation_time": 1755597003.4494612,
+                "auxillary_file_paths": [
+                    "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-30719872.pt"
+                ]
+            },
+            {
+                "steps": 38399872,
+                "file_path": "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-38399872.onnx",
+                "reward": null,
+                "creation_time": 1755606363.9170089,
+                "auxillary_file_paths": [
+                    "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-38399872.pt"
+                ]
+            },
+            {
+                "steps": 46079984,
+                "file_path": "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-46079984.onnx",
+                "reward": 17.20266760568068,
+                "creation_time": 1755615861.0590048,
+                "auxillary_file_paths": [
+                    "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-46079984.pt"
+                ]
+            },
+            {
+                "steps": 53759872,
+                "file_path": "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-53759872.onnx",
+                "reward": null,
+                "creation_time": 1755625388.0620906,
+                "auxillary_file_paths": [
+                    "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-53759872.pt"
+                ]
+            },
+            {
+                "steps": 56645504,
+                "file_path": "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-56645504.onnx",
+                "reward": null,
+                "creation_time": 1755629075.4729056,
+                "auxillary_file_paths": [
+                    "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-56645504.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 56645504,
+            "file_path": "results\\CompetitiveByPhase\\CooperativeCleaner.onnx",
+            "reward": null,
+            "creation_time": 1755629075.4729056,
+            "auxillary_file_paths": [
+                "results\\CompetitiveByPhase\\CooperativeCleaner\\CooperativeCleaner-56645504.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

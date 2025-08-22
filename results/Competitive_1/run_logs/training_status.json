@@ -1,0 +1,65 @@
+{
+    "CooperativeCleaner": {
+        "checkpoints": [
+            {
+                "steps": 11519984,
+                "file_path": "results\\Competitive_1\\CooperativeCleaner\\CooperativeCleaner-11519984.onnx",
+                "reward": 9.542857142857143,
+                "creation_time": 1755487291.0797236,
+                "auxillary_file_paths": [
+                    "results\\Competitive_1\\CooperativeCleaner\\CooperativeCleaner-11519984.pt"
+                ]
+            },
+            {
+                "steps": 17279984,
+                "file_path": "results\\Competitive_1\\CooperativeCleaner\\CooperativeCleaner-17279984.onnx",
+                "reward": 7.9714285714285715,
+                "creation_time": 1755491028.8014777,
+                "auxillary_file_paths": [
+                    "results\\Competitive_1\\CooperativeCleaner\\CooperativeCleaner-17279984.pt"
+                ]
+            },
+            {
+                "steps": 23039984,
+                "file_path": "results\\Competitive_1\\CooperativeCleaner\\CooperativeCleaner-23039984.onnx",
+                "reward": 10.057142857142857,
+                "creation_time": 1755494759.7281413,
+                "auxillary_file_paths": [
+                    "results\\Competitive_1\\CooperativeCleaner\\CooperativeCleaner-23039984.pt"
+                ]
+            },
+            {
+                "steps": 28799984,
+                "file_path": "results\\Competitive_1\\CooperativeCleaner\\CooperativeCleaner-28799984.onnx",
+                "reward": 10.914285714285715,
+                "creation_time": 1755498481.2737105,
+                "auxillary_file_paths": [
+                    "results\\Competitive_1\\CooperativeCleaner\\CooperativeCleaner-28799984.pt"
+                ]
+            },
+            {
+                "steps": 28800448,
+                "file_path": "results\\Competitive_1\\CooperativeCleaner\\CooperativeCleaner-28800448.onnx",
+                "reward": 10.296875,
+                "creation_time": 1755498481.514702,
+                "auxillary_file_paths": [
+                    "results\\Competitive_1\\CooperativeCleaner\\CooperativeCleaner-28800448.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 28800448,
+            "file_path": "results\\Competitive_1\\CooperativeCleaner.onnx",
+            "reward": 10.296875,
+            "creation_time": 1755498481.514702,
+            "auxillary_file_paths": [
+                "results\\Competitive_1\\CooperativeCleaner\\CooperativeCleaner-28800448.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

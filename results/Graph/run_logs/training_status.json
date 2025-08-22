@@ -1,0 +1,131 @@
+{
+    "difficulty": {
+        "lesson_num": 0
+    },
+    "CooperativeCleaner": {
+        "checkpoints": [
+            {
+                "steps": 3999984,
+                "file_path": "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-3999984.onnx",
+                "reward": null,
+                "creation_time": 1755759054.9197242,
+                "auxillary_file_paths": [
+                    "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-3999984.pt"
+                ]
+            },
+            {
+                "steps": 5999984,
+                "file_path": "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-5999984.onnx",
+                "reward": 183.85881627519439,
+                "creation_time": 1755761952.0774703,
+                "auxillary_file_paths": [
+                    "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-5999984.pt"
+                ]
+            },
+            {
+                "steps": 7999984,
+                "file_path": "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-7999984.onnx",
+                "reward": null,
+                "creation_time": 1755764800.7877376,
+                "auxillary_file_paths": [
+                    "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-7999984.pt"
+                ]
+            },
+            {
+                "steps": 9999984,
+                "file_path": "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-9999984.onnx",
+                "reward": null,
+                "creation_time": 1755767623.1279597,
+                "auxillary_file_paths": [
+                    "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-9999984.pt"
+                ]
+            },
+            {
+                "steps": 11999984,
+                "file_path": "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-11999984.onnx",
+                "reward": null,
+                "creation_time": 1755770443.8098185,
+                "auxillary_file_paths": [
+                    "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-11999984.pt"
+                ]
+            },
+            {
+                "steps": 13999984,
+                "file_path": "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-13999984.onnx",
+                "reward": 211.14862430130597,
+                "creation_time": 1755773267.4755566,
+                "auxillary_file_paths": [
+                    "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-13999984.pt"
+                ]
+            },
+            {
+                "steps": 15999872,
+                "file_path": "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-15999872.onnx",
+                "reward": null,
+                "creation_time": 1755776095.1675742,
+                "auxillary_file_paths": [
+                    "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-15999872.pt"
+                ]
+            },
+            {
+                "steps": 17999872,
+                "file_path": "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-17999872.onnx",
+                "reward": null,
+                "creation_time": 1755778921.291563,
+                "auxillary_file_paths": [
+                    "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-17999872.pt"
+                ]
+            },
+            {
+                "steps": 19999872,
+                "file_path": "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-19999872.onnx",
+                "reward": null,
+                "creation_time": 1755781753.4451036,
+                "auxillary_file_paths": [
+                    "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-19999872.pt"
+                ]
+            },
+            {
+                "steps": 21999872,
+                "file_path": "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-21999872.onnx",
+                "reward": null,
+                "creation_time": 1755784575.6656475,
+                "auxillary_file_paths": [
+                    "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-21999872.pt"
+                ]
+            },
+            {
+                "steps": 23999872,
+                "file_path": "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-23999872.onnx",
+                "reward": null,
+                "creation_time": 1755787435.046756,
+                "auxillary_file_paths": [
+                    "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-23999872.pt"
+                ]
+            },
+            {
+                "steps": 24000640,
+                "file_path": "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-24000640.onnx",
+                "reward": null,
+                "creation_time": 1755787435.3428712,
+                "auxillary_file_paths": [
+                    "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-24000640.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 24000640,
+            "file_path": "results\\Graph\\CooperativeCleaner.onnx",
+            "reward": null,
+            "creation_time": 1755787435.3428712,
+            "auxillary_file_paths": [
+                "results\\Graph\\CooperativeCleaner\\CooperativeCleaner-24000640.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}
