@@ -2,6 +2,7 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
+using Unity.MLAgents.Policies;
 
 public class CompetitiveAgent : Agent
 {
@@ -53,10 +54,26 @@ public class CompetitiveAgent : Agent
     ApplyColor();
     }
 
+    BehaviorParameters bp;
+
     protected override void Awake()
     {
         // Cache early to avoid race conditions where OnEpisodeBegin runs before Initialize
         if (m_AgentRb == null) m_AgentRb = GetComponent<Rigidbody>();
+        if (bp == null) bp = GetComponent<BehaviorParameters>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && bp != null)
+        {
+            if (bp.BehaviorType == BehaviorType.InferenceOnly)
+                bp.BehaviorType = BehaviorType.HeuristicOnly;
+            else
+                bp.BehaviorType = BehaviorType.InferenceOnly;
+
+            Debug.Log("Ahora BehaviorType = " + bp.BehaviorType);
+        }
     }
 
     public override void CollectObservations(VectorSensor sensor)

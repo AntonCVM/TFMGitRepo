@@ -12,13 +12,13 @@ En la industria, esta necesidad aparece en casos como la reposición en almacene
 
 Diversas líneas de investigación han intentado superar los retos de exploración y navegación:
 
-* **Shaping de recompensas.** Ng et al. (1999) establecieron las bases del *potential-based reward shaping*, garantizando la invariancia de política al añadir funciones potenciales estacionarias. No obstante, se ha observado que en entornos no estacionarios (con spawn/despawn de objetivos) o con geometrías restrictivas, el shaping puede inducir **exploits** o **mínimos locales** (Khatib, 1986).
+* **Shaping de recompensas.** Ng et al. [@Ng1999PolicyInvariance] establecieron las bases del *potential-based reward shaping*, garantizando la invariancia de política al añadir funciones potenciales estacionarias. No obstante, se ha observado que en entornos no estacionarios (con spawn/despawn de objetivos) o con geometrías restrictivas, el shaping puede inducir **exploits** o **mínimos locales** (Khatib [@Khatib1986RealTime]).
 
-* **Navegación topológica.** En lugar de depender de coordenadas globales, métodos recientes han mostrado la eficacia de representar el entorno como un **grafo de nodos y conexiones**, sobre el cual una política global selecciona metas intermedias mientras un controlador local ejecuta los movimientos (Chaplot et al., 2020; Chen et al., 2019).
+* **Navegación topológica.** En lugar de depender de coordenadas globales, métodos recientes han mostrado la eficacia de representar el entorno como un **grafo de nodos y conexiones**, sobre el cual una política global selecciona metas intermedias mientras un controlador local ejecuta los movimientos [@Chaplot2020NeuralTopoSLAM; @Chen2019GraphNav]. Además, la memoria topológica en grafo permite persistir landmarks y relaciones espaciales a largo plazo [@Kwon2021VisualGraphMemory].
 
-* **Exploración activa.** Extensiones como Active Neural SLAM (Chaplot et al., 2020) integran percepción y planificación en un marco jerárquico, facilitando que el agente aprenda no solo a seguir objetivos, sino también a descubrir nuevas regiones del entorno de forma eficiente.
+* **Exploración activa.** Extensiones como Active Neural SLAM [@Chaplot2020ActiveNeuralSLAM] integran percepción y planificación en un marco jerárquico, facilitando que el agente aprenda no solo a seguir objetivos, sino también a descubrir nuevas regiones del entorno de forma eficiente.
 
-* **Tendencias recientes.** Benchmarks como MiniGrid MultiRoom (Farama Foundation) confirman que entornos de habitaciones y pasillos son un marco adecuado para estudiar estos retos de manera controlada. Revisiones como la de Sun et al. (2024) en **Object Goal Navigation** clasifica los trabajos existentes sobre la Navegación por Objetivos (ObjectNav) en tres categorías principales:
+* **Tendencias recientes.** Benchmarks como MiniGrid MultiRoom [@MiniGridMultiRoom] confirman que entornos de habitaciones y pasillos son un marco adecuado para estudiar estos retos de manera controlada. Revisiones como la de Sun et al. [@Sun2024ObjectNavSurvey] en **Object Goal Navigation** clasifica los trabajos existentes sobre la Navegación por Objetivos (ObjectNav) en tres categorías principales:
 
     * **Métodos "end-to-end"**: Estos métodos mapean directamente las observaciones del entorno a las acciones del agente. El artículo subdivide esta categoría en dos enfoques principales:
         * **Representación Visual**: Se centra en extraer información útil de las observaciones para mejorar la comprensión del entorno por parte del agente.
@@ -58,5 +58,31 @@ Aunque este trabajo se centra en el entrenamiento de un **agente único**, el di
 La formulación mediante **grafo de señales** y **shaping por récords** ofrece un marco flexible para este salto: los nodos del grafo pueden actuar como puntos de coordinación o encuentro, mientras que el shaping por récords evita castigos locales que podrían complicarse aún más en presencia de múltiples agentes.
 
 De este modo, el trabajo no solo aporta un análisis sobre cómo superar los retos de navegación en entornos de habitaciones y pasillos para un agente único, sino que también sienta las bases para estudiar fenómenos de cooperación, competición y resolución de dilemas sociales en entornos multiagente, de interés tanto académico como industrial.
+
+---
+
+## Material disponible
+
+El material completo de este Trabajo de Fin de Máster (TFM), incluyendo código, documentación y experimentos, está disponible públicamente en el siguiente repositorio de GitHub:
+
+[https://github.com/AntonCVM/TFMGitRepo](https://github.com/AntonCVM/TFMGitRepo)
+
+Para probar el entorno tanto manualmente como con el modelo entrenado según el escenario tercero ejecutar UnityEnvironment.exe de la carpeta build. Indicaciones:
+
+* AWSD: Mover el agente manualmente.
+
+* Q: Alterna la visualización del grafo de señales.
+
+* E: Alterna la visualización de observaciones del agente en el grafo de señales.
+
+* F: Cambia entre control manual y control por modelo de IA preentrenado.
+
+* Tab: Cambia el ángulo de la cámara.
+
+* º (BackQuote): Vista general del área.
+
+* 1: Vista sobre el agente principal.
+
+* 2, 3, 4: Vista sobre otros agentes (si están activos).
 
 ---

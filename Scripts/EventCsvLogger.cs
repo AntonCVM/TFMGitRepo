@@ -28,8 +28,8 @@ public class EventCsvLogger : MonoBehaviour
     [Header("Lifecycle / Conditions")]
     public bool autoCreateSingleton = true;
     public bool persistBetweenScenes = true;
-    public bool logInEditor = true;
-    public bool logInBuild = true;
+    public bool logInEditor = false;
+    public bool logInBuild = false;
 
     // ---------------- Runtime state (public readonly) ----------------
     [NonSerialized] public string sessionId;

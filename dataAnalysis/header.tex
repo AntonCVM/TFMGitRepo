@@ -1,0 +1,30 @@
+% ==== Mantener figuras en posición H (tu ajuste original) ====
+\usepackage{float}
+\let\oldfigure\figure
+\let\endoldfigure\endfigure
+\renewenvironment{figure}[1][H]{\oldfigure[H]}{\endoldfigure}
+
+% ==== Tipografías elegantes (XeLaTeX) ====
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}   % serif elegante
+\setsansfont{TeX Gyre Heros}     % sans limpia
+\setmonofont{DejaVu Sans Mono}   % mono nítida
+
+% Microtipografía y URLs
+\usepackage{microtype}
+\usepackage{xurl}
+
+% ==== Estilo con KOMA-Script (sin titlesec) ====
+% Tamaños y peso de títulos:
+\setkomafont{section}{\rmfamily\bfseries\Large}
+\setkomafont{subsection}{\rmfamily\bfseries\large}
+\setkomafont{subsubsection}{\rmfamily\bfseries\normalsize}
+
+% Espaciado entre párrafos (sin sangría)
+\setlength{\parskip}{0.6em}
+\setlength{\parindent}{0pt}
+
+% ==== Abstract en español ====
+% Activa encabezado del abstract y nómbralo "Resumen"
+\KOMAoptions{abstract=true}
+\renewcommand{\abstractname}{Resumen}

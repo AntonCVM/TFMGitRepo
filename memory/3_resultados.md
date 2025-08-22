@@ -6,21 +6,23 @@ En este capítulo se presentan los resultados obtenidos a lo largo de los tres e
 
 ## Enfoque 1: Observaciones globales sin shaping
 
-El agente recibía coordenadas globales normalizadas tanto de sí mismo como de los objetivos. Sin embargo, la ausencia de shaping y de estructuras que guiasen la atención provocó una **exploración muy deficiente**:
+El agente recibía coordenadas globales normalizadas tanto de sí mismo como de los objetivos. Este exceso de información global, sin estructura, dificultó que el agente encontrara estrategias útiles y saliera de la habitación inicial. En general resultó en una **exploración muy deficiente**:
 
 * Rara vez abandonaba la habitación inicial.
 * Apenas conseguía recolectar objetos.
 * El aprendizaje se caracterizó por una **pendiente casi nula** en la evolución del reward.
 
-📈 *Figura 1. Evolución del reward durante el entrenamiento del Enfoque 1.*
-*(placeholder para gráfica con pendiente baja, casi plana)*
+Reward vs steps. Cada step es una decisión del agente, por tanto un episodio consta de muchos steps.
+
+![Evolución del reward promedio por episodio en escenario 1 y 2](../dataAnalysis/Environment_Cumulative%20Reward%201.png){.H}
 
 ---
 
 ## Enfoque 2: Observaciones globales + shaping basado en potencial
 
-La introducción de un shaping de recompensa produjo una **mejora ligera** en la recogida de recolectables e incentivó algo de exploración adicional. No obstante, también aparecieron limitaciones y comportamientos no deseados:
+La introducción de un shaping de recompensa no produjo **ninguna mejora** en la recogida de colectables ni tampoco incentivó la exploración de habitaciones adicionales, en verdad fue **contraproducente**. De hecho, aparecieron limitaciones y comportamientos no deseados:
 
+* El shaping no estaba bien adecuado al experimento. Este proporcionaba recompensas al reducir el potencial y las quitaba al aumentarlo dejando por defecto un saldo neto de 0. Tan solo produciría un saldo positivo en caso de que el agente terminara el episodio cerca de un recolectable, y dado que los episodios eran largos, este posible incentivo era desdeñable.
 * **Exploits del potencial** debido a cambios abruptos en el spawn y despawn de objetivos.
 * Agente que permanecía inmóvil junto a las paredes, recibiendo recompensas sin progresar en la tarea.
 * Problemas de granularidad espacial:
@@ -28,11 +30,23 @@ La introducción de un shaping de recompensa produjo una **mejora ligera** en la
   * Con **baldosas grandes**, no era capaz de detectar los pasillos.
   * Con **baldosas pequeñas**, se movía erráticamente en círculos.
 
-📈 *Figura 2. Evolución del reward durante el entrenamiento del Enfoque 2.*
-*(placeholder para gráfica con pendiente ligera, mejora lineal muy baja)*
+* Al final estuvo calibrado con baldosas pequeñas. Los episodios no fueron lo suficientemente largos como para que al agente le diera tiempo a visitar consistentemente todas las baldosas de la habitación inicial, lo que le desincentivaba a buscar nuevas habitaciones.
 
-📊 *Figura 3. Recolectables recogidos en el Enfoque 2 a lo largo del entrenamiento.*
-*(placeholder para futura gráfica)*
+### Gráficas de resultados
+
+* **Reward vs steps**.
+
+![Evolución del reward promedio por episodio en escenario 1 y 2](../dataAnalysis/Environment_Cumulative%20Reward%202.png){.H}
+
+---
+
+* **Comparativa con resultados previos**.A continuación se muestran gráficas de la cantidad de recolectables recogidos en ambos enfoques, de los cambios de habitación y de la cantidad de habitaciones exploradas:
+
+![Evolución del nº de recolectables positivos promedio por episodio en escenario 1 y 2](../dataAnalysis/Evolucion%20del%20n%20de%20recolectables%20positivos%20promedio%20por%20episodio%20en%20escenario%201%20y%202.png){.H}
+
+![Promedio de cambios de habitación por episodio en escenario 1 y 2](../dataAnalysis/Promedio%20de%20cambios%20de%20habitación%20por%20episodio%20en%20escenario%201%20y%202.png){.H}
+
+![Promedio de habitaciones visitadas por episodio en escenario 1 y 2](../dataAnalysis/Promedio%20de%20habitaciones%20visitadas%20por%20episodio%20en%20escenario%201%20y%202.png){.H}
 
 ---
 
@@ -48,18 +62,38 @@ Los resultados fueron claramente superiores:
 * Se observó un comportamiento **estable y eficiente**, con una tasa sostenida de progreso hacia los objetivos.
 * También mostró la capacidad de **distinguir y esquivar obstáculos negativos** con su información local. Sin embargo, esta evitación no fue completamente fiable, lo que sugiere que la penalización aplicada a los obstáculos era demasiado baja para consolidar un rechazo perfecto.
 
-📈 *Figura 4. Evolución del reward durante el entrenamiento del Enfoque 3.*
-*(placeholder para gráfica con subida rápida inicial y plateau alto a mitad del entrenamiento)*
+Dado que en el mismo experimento se introdujo el grafo y las observaciones polares locales es imposible determinar el impacto individual de cada uno por separado.
 
-📊 *Figura 5. Recolectables recogidos en el Enfoque 3 a lo largo del entrenamiento.*
-*(placeholder para futura gráfica)*
+### Gráficas de resultados
+
+* **Reward vs steps**.
+
+![Evolución del reward promedio por episodio en escenario 1 y 2](../dataAnalysis/Environment_Cumulative%20Reward%203.png){.H}
+
+---
+
+* **Comparativa con resultados previos**. A continuación se muestran gráficas de la cantidad de recolectables recogidos en ambos enfoques, de los cambios de habitación y de la cantidad de habitaciones exploradas:
+
+![Evolución del nº de recolectables positivos promedio por episodio en escenario 1 y 2](../dataAnalysis/Evolucion%20del%20n%20de%20recolectables%20positivos%20promedio%20por%20episodio.png){.H}
+
+![Promedio de cambios de habitación por episodio en escenario 1 y 2](../dataAnalysis/Promedio%20de%20cambios%20de%20habitación%20por%20episodio.png){.H}
+
+![Promedio de habitaciones visitadas por episodio en escenario 1 y 2](../dataAnalysis/Promedio%20de%20habitaciones%20visitadas%20por%20episodio.png){.H}
+
+---
+
+* **Aciertos vs errores**. En la siguiente gráfica puede verse como los recolectables negativos se estancan en lugar de reducirse:
+
+![Evolución del nº de recolectables positivos y negativos por episodio en el Escenario 3](../dataAnalysis/Evolucion%20del%20n%20de%20recolectables%20positivos%20y%20negativos%20por%20episodio%20en%20el%20Escenario%203.png){.H}
 
 ---
 
 ## Comparativa general
 
-Aunque los valores absolutos de reward no son directamente comparables entre enfoques, las gráficas permiten observar tendencias claras:
+Aunque los valores absolutos de reward no son directamente comparables entre enfoques, las gráficas de recolectables permiten observar tendencias claras:
 
 * **Enfoque 1**: estancamiento casi completo.
-* **Enfoque 2**: ligera mejora, pero con comportamientos espurios.
+* **Enfoque 2**: empeoramiento por falta de adecuación del shaping.
 * **Enfoque 3**: avance sostenido y eficiente, con un patrón de aprendizaje robusto.
+
+---

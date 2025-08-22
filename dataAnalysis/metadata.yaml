@@ -1,0 +1,32 @@
+title: "Trabajo de Fin de Máster"
+subtitle: "Del Potencial al Grafo: Estudio de Estrategias de Aprendizaje por Refuerzo para Navegación en Entornos Parcialmente Observables"
+author:
+  - "Antón Carlos Vázquez Martínez"
+  - "Universidad Alfonso X el Sabio (UAX)"
+date: "Agosto 2025"
+
+# Eisvogel
+titlepage: true
+titlepage-logo: "logo.png"
+logo-width: "100mm"
+
+
+toc: true
+toc-own-page: true
+toc-title: "Índice"
+
+
+classoption:
+  - abstract
+
+header-includes:
+  - \renewcommand{\abstractname}{Resumen}
+
+abstract: |
+  Este Trabajo de Fin de Máster estudia la navegación de un agente único en un entorno de habitaciones interconectadas por pasillos estrechos, un escenario representativo de problemas de exploración y recompensas escasas. Se implementaron tres enfoques progresivos: (1) observaciones globales absolutas, (2) observaciones globales con shaping de recompensas, y (3) observaciones locales apoyadas en un grafo de propagación de señales y shaping por récords de aproximación.
+
+  El análisis muestra que las observaciones globales sin estructura no inducen políticas útiles, mientras que el shaping basado en potenciales resulta frágil ante dinámicas de aparición y desaparición de objetivos. En contraste, el enfoque local con soporte topológico permitió un aprendizaje rápido, estable y robusto, guiando la atención del agente y evitando los exploits detectados previamente.
+
+  Los resultados confirman que la calidad de la navegación depende más de la estructura de las observaciones y de la definición del shaping que de la cantidad de información disponible. Además, la formulación propuesta es escalable a escenarios multiagente, donde aparecen fenómenos de coordinación y competencia de interés académico e industrial.
+
+lang: es

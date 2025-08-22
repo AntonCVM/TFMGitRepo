@@ -4,19 +4,19 @@
 
 El entorno experimental se diseñó con el objetivo de reproducir un escenario simple pero representativo de los problemas de navegación con recompensas escasas. Consta de **cuatro habitaciones principales**, dispuestas en torno a un eje central y conectadas mediante **pasillos estrechos en forma de cruz (+)**. Esta configuración obliga al agente a **atravesar cuellos de botella** para desplazarse entre habitaciones, lo que dificulta la exploración aleatoria y resalta la necesidad de guías estructuradas.
 
-## Implementación de los objetivos (collectibles)
+## Implementación de los objetivos (recolectables)
 
 Los objetos recolectables actúan como fuente principal de recompensa. Se implementaron con un **tiempo de vida limitado**, decreciente hasta desaparecer, de modo que el agente debe aprender a priorizar su búsqueda. La visualización incorpora un indicador de tiempo (altura), lo que permite un feedback intuitivo en simulación.
 
-Además, los collectibles pueden estar **asociados a un agente específico** o ser genéricos, lo que en trabajos futuros permitirá extender el análisis a escenarios competitivos multiagente. En este trabajo se emplearon collectibles genéricos (con menor valor) y específicos por agente (con mayor valor). El **respawn controlado** asegura un flujo dinámico de recompensas, evitando memorizar posiciones fijas.
+Además, los recolectables pueden estar **asociados a un agente específico** o ser genéricos, lo que en trabajos futuros permitirá extender el análisis a escenarios competitivos multiagente. En este trabajo se emplearon recolectables genéricos (con menor valor) y específicos por agente (con mayor valor). El **respawn controlado** asegura un flujo dinámico de recompensas, evitando memorizar posiciones fijas.
 
 ## Dinámica temporal del entorno
 
-El entorno está gobernado por **ciclos y subciclos** que determinan qué tipo de collectibles aparecen en cada fase. Esto introduce una variación temporal que simula cambios de disponibilidad de recursos, aumentando la complejidad del problema. En la configuración final se emplearon **cuatro subciclos**, alternando fases con abundancia y escasez de determinados objetos:
-- En uno de ellos abundan los collectibles específicos del agente 1 (el agente estudiado).
-- En el subciclo previo y en el posterior, estos collectibles aparecen ocasionalmente.
+El entorno está gobernado por **ciclos y subciclos** que determinan qué tipo de recolectables aparecen en cada fase. Esto introduce una variación temporal que simula cambios de disponibilidad de recursos, aumentando la complejidad del problema. En la configuración final se emplearon **cuatro subciclos**, alternando fases con abundancia y escasez de determinados objetos:
+- En uno de ellos abundan los recolectables específicos del agente 1 (el agente estudiado).
+- En el subciclo previo y en el posterior, estos recolectables aparecen ocasionalmente.
 - En el subciclo opuesto, no aparece ninguno de los específicos del agente 1.
-Por otro lado, los collectibles genéricos aparecen de forma homogénea durante todo el episodio, sin depender del subciclo.
+Por otro lado, los recolectables genéricos aparecen de forma homogénea durante todo el episodio, sin depender del subciclo.
 
 
 ## Acciones del agente
@@ -31,6 +31,8 @@ Estas acciones simples se eligieron para que la dificultad emergiera del **entor
 ## Observaciones y evolución de los tres enfoques
 
 Uno de los principales objetivos de los experimentos fue **probar distintos diseños de observaciones** y comprobar cómo afectaban al aprendizaje. El proceso siguió un enfoque iterativo, simplificando progresivamente las entradas para reducir la carga cognitiva del agente.
+
+Nótese que la falta de un estándar entre los diferentes enfoques dificultó la comparación precisa de resultados. Esta falta de estandarización responde a un diseño exploratorio que priorizaba encontrar una configuración funcional antes que contrastar enfoques.
 
 ### Enfoque 1 – Global absoluto
 
@@ -48,7 +50,7 @@ Uno de los principales objetivos de los experimentos fue **probar distintos dise
        - Rotación Y discretizada y normalizada
        - ID del agente
 
-    3. **Para cada collectible en el área:**
+    3. **Para cada recolectable en el área:**
        - Posición X relativa al centro del área, normalizada
        - Posición Z relativa al centro del área, normalizada
        - ID permitido para recoger
@@ -60,13 +62,12 @@ Uno de los principales objetivos de los experimentos fue **probar distintos dise
        - Índice de subciclo normalizado
 
 
-* **Recompensa:** únicamente por recoger un objetivo. 4 puntos por collectible asociado y 1 punto por collectible genérico.
+* **Recompensa:** únicamente por recoger un objetivo. 4 puntos por recolectable asociado y 1 punto por recolectable genérico.
 * **Motivación:** establecer una línea base simple.
-* **Limitación encontrada:** exceso de información global, sin estructura, lo que dificultó que el agente encontrara estrategias útiles y saliera de la habitación inicial.
 
 ### Enfoque 2 – Global con shaping
 
-* **Observaciones:** similares que en el enfoque 1 pero un poco simplificadas. Se eliminó información de los collectibles que no se podían recoger y la información del subciclo actual:
+* **Observaciones:** similares que en el enfoque 1 pero un poco simplificadas. Se eliminó información de los recolectables que no se podían recoger y la información del subciclo actual:
 
     1. **Datos propios del agente:**
        - Cooldown de rotación (normalizado entre 0 y 1)
@@ -80,7 +81,7 @@ Uno de los principales objetivos de los experimentos fue **probar distintos dise
        - Posición X relativa al centro del área, normalizada
        - Posición Z relativa al centro del área, normalizada
 
-    3. **Para cada collectible pickeable:**
+    3. **Para cada recolectable:**
        - Posición X relativa al centro del área, normalizada
        - Posición Z relativa al centro del área, normalizada
        - Tiempo de vida restante normalizado (remainingSeconds / maxLifetime)
@@ -91,17 +92,13 @@ Uno de los principales objetivos de los experimentos fue **probar distintos dise
   * Bonus por **pisar nuevas baldosas** dentro del episodio (incentivar exploración). A lo largo de un episodio el agente obtenía al menos de 1 punto por esta fuente.
   * Variación de un **potencial** definido como la distancia al objetivo más cercano (premiar al acercarse, castigar al alejarse).  lo largo de un episodio el agente obtenía cerca de 5 puntos por esta fuente.
 * **Motivación:** guiar al agente hacia objetivos y fomentar la exploración estructurada de pasillos.
-* **Limitaciones encontradas:**
-
-  * El shaping era **exploiteable** debido a los cambios abruptos de spawn/despawn. El agente podía acercarse a una pared para ganar reward al acercarse a un collectible y esperar a que este desapareciera para no perder reward por alejarse.
-  * Los bonus por baldosas resultaron poco informativos: con celdas grandes no distinguía pasillos, y con celdas pequeñas el agente caía en comportamientos circulares.
 
 ### Enfoque 3 – Local con grafo de señales
 
 * **Observaciones:**
 
   * Datos locales en **coordenadas polares** apoyados por un sistema de **raycast**. Todas las observaciones se proporcionaron con histórico de profundidad 3 para facilitar la navegación.
-  * Señales propagadas a través de un **grafo topológico**: cada collectible emite una señal que viaja por el grafo, y el agente recibe únicamente la señal más intensa visible emitida por cada collectible.
+  * Señales propagadas a través de un **grafo topológico**: cada recolectable emite una señal que viaja por el grafo, y el agente recibe únicamente la señal más intensa visible emitida por cada recolectable.
   
       1. **Observaciones propias compactas:**
          - Cooldown de rotación normalizado (0..1)
@@ -111,7 +108,7 @@ Uno de los principales objetivos de los experimentos fue **probar distintos dise
          - 5 raycast en 45º que detectan tags y distancias
 
       2. **Observaciones de broadcasters externos:**
-         Para cada broadcaster (collectable en el grafo) observado, se añaden 4 observaciones:
+         Para cada broadcaster (recolectable en el grafo) observado, se añaden 4 observaciones:
          - Distancia normalizada al último propagador de la señal propia más cercana
          - Seno del ángulo relativo
          - Coseno del ángulo relativo
@@ -122,10 +119,15 @@ Uno de los principales objetivos de los experimentos fue **probar distintos dise
 
   * Premio por **batir récords de aproximación** hacia cada objetivo (mejor mínima distancia alcanzada), eliminando penalizaciones por retroceder.
 
-  * En suposición (acertada) de que este enfoque facilitaría la exploración se planteó un reto adicional generando obstáculos aleatorios en la forma de collectibles con reward negativo, mucho más grandes y abundantes que el resto. Cada obstáculo resta 2 puntos.
+  * En suposición (acertada) de que este enfoque facilitaría la exploración se planteó un reto adicional generando obstáculos aleatorios en la forma de recolectables con reward negativo, mucho más grandes y abundantes que el resto. Cada obstáculo resta 2 puntos.
+
+  * Para compensar que los recolectables asociados al agente incluían recompensa extra por acercarse, se incrementó la recompensa de los genéricos a 5 puntos.
 
 * **Motivación:** simplificar las observaciones a información **local y estructurada**, reducir exploits del shaping y guiar de forma natural la exploración de pasillos.
-* **Resultado:** el agente aprendió a navegar de manera estable y eficiente, demostrando que una representación local apoyada en estructura topológica era mucho más eficaz que la global ingenua.
+
+![Captura del entorno](../dataAnalysis/Image%20Sequence_001_0200.jpg){.H}
+
+![Captura del entorno](../dataAnalysis/Image%20Sequence_007_0318.jpg){.H}
 
 ## Algoritmo de entrenamiento (PPO con Unity ML‑Agents)
 
